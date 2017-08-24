@@ -24,9 +24,21 @@ In this project, the goal is to write a software pipeline to identify the lane b
 
 ### Briefly state how you computed the camera matrix and distortion coefficients. Provide an example of a distortion corected calibration image
 
+The code for the camera calibration is in the _calibrate.py_ file. It simply loads the images from _/camera_cal/_ directory and uses the chessboard corners to compute the camera matrix and distortion coeficients. 
+
+The result data is stored in the _wide_dist_pickle.p_ file which will be used by the rest of the scripts.
+
+## Original Image
+![Original Image](/test_images/straight_lines2.jpg) 
+
+## Calibrated / Undistorted
+![Undistorted](/test_images/undistorted2.jpg)
+
 ## Pipeline (test images)
 
 ### 1. Provide an example of a distortion-corrected image
+
+Example given previously
 
 ### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image. Provide an example of a binary image result
 
