@@ -50,7 +50,6 @@ It is in the _perspective_ function:
 
 ```
 def perspective(focal=1.3245, maxHeight=460, size=(1280,720), shrink=0.0, xmpp=0.004):
-
 ```
 
 The conversion in the X axis from pixels to meters is modified accordingly and returned
