@@ -46,13 +46,21 @@ Example given previously
 
 At the beginning the perspective transformation was calculated manually. Afterwards a small piece of code was developed in order to generate the transformation from just one parameter that is linked to the camera focal length and information about how to compress the images so that the curves on the road are visible when warped.
 
-It is in the _perpective_ function:
+It is in the _perspective_ function:
 
 ```
-sh
-def main():
+def perspective(focal=1.3245, maxHeight=460, size=(1280,720), shrink=0.0, xmpp=0.004):
 ```
 
+The conversion in the X axis from pixels to meters is modified accordingly and returned
+
+## Original Image
+![Original Image](/test_images/straight_lines2.jpg)
+
+## Warped Image
+![Warped](/test_images/warped.jpg)
+
+As seen in the warped image, lane lines are parallel to each other.
 
 ### 4. Describe how (and identify in the code) you identified lane-line pixels and fit their positions with a polynomial
 
