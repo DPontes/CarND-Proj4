@@ -50,7 +50,7 @@ It is in the _perpective_ function:
 
 ```
 sh
-def main():
+def perpective():
 ```
 
 
