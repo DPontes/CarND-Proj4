@@ -46,10 +46,12 @@ Example given previously
 
 At the beginning the perspective transformation was calculated manually. Afterwards a small piece of code was developed in order to generate the transformation from just one parameter that is linked to the camera focal length and information about how to compress the images so that the curves on the road are visible when warped.
 
+<<<<<<< HEAD
 It is in the _perspective_ function:
 
 ```
 def perspective(focal=1.3245, maxHeight=460, size=(1280,720), shrink=0.0, xmpp=0.004):
+
 ```
 
 The conversion in the X axis from pixels to meters is modified accordingly and returned
