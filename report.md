@@ -217,6 +217,19 @@ Here we have an image where the lanes are clearly marked, some important stats a
 
 ### Provide a link to your final video output. Your pipeline should perform reasonably well on the entire project video
 
+The video can be viewed here: https://youtu.be/c6_leCC7t-8
+(Video is not listed)
+
+In the video, in the small window with the warped image, the red line markers at the left and right show the error. There is also a blue line, not easy to see, that shows the last frame adjustment.
+
 ## Discussion
 
 ### Briefly discuss any problems / issues you faced in your implementation of this project. Where will your pipeline likely fail? What could you do to make it more robust?
+
+I have spent more time on this project than ever before, even though it felt easier.
+
+Most problems have been with image processing. How to eliminate shadows, identify what really is important in the image.
+
+The video only has the "clear lane" problems and these can be solved by the "forget frame" as they are quite stable sessions.
+
+Looking back I feel that I overcomplicated my code, but the algorithm in my head made sense to me, and I didn't want to start over, as it always felt that I was close to the finish.
