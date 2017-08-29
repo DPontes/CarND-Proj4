@@ -42,6 +42,40 @@ Example given previously
 
 ### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image. Provide an example of a binary image result
 
+All image processing is in the _process_image_ function. It receives an image and returns an array of warped, filtered images.
+
+The process is:
+
+- Undistort image
+- Convert to __HSV__ and separate the channels
+- Apply __EqualizeHist__ to value and saturation channels
+- Apply a __GaussianBlur__ with a 7x7 kernel to value and saturation channels
+- Call a special __remove_dark__ function (later explained)
+- Apply a set of filters and warp the resulting images
+
+The __remove_dark__ function was originally used to remove dark lines and soft some edges. Finally it became a more generalized light equalization. It's process is:
+
+- Divide the lower half of the image (with the exception of the bottom 20 pixels) in __n__ horizontal slides
+- For each slide compute the average __V__ value in the center of the image (between 20% and 80% of the width)
+- Select all points below this average value and apply to them a BoxFilter with 50x50 pixels in __S__ and __V__ channels
+- Just for the __V__ channel move all below average intensities between 0 and 50 and expand the ones over the average to 50-255
+
+The idea is that low intensity features are blurred and will generate less gradients as high intensities have a greater range.
+
+Here is an example of the value channel, first the original image:
+
+![Original Image](/test_images/filter1.png)
+
+Then this one is jsut after the equalization and GaussianBlur:
+
+![Filter2 Image](/test_images/filter2.png)
+
+And this one is the same as the previous one but after __remove_dark__ with 3 slides:
+
+![Filter3 Image](/test_images/filter3.png)
+
+
+
 ### 3. Describe how (and identify in your code) you performed a perspective transform and provide an example of a transformed image
 
 At the beginning the perspective transformation was calculated manually. Afterwards a small piece of code was developed in order to generate the transformation from just one parameter that is linked to the camera focal length and information about how to compress the images so that the curves on the road are visible when warped.
