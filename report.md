@@ -46,7 +46,7 @@ All image processing is in the _process_image_ function. It receives an image an
 
 The process is:
 
-- Undistort image
+- Undistort the image
 - Convert to __HSV__ and separate the channels
 - Apply __EqualizeHist__ to value and saturation channels
 - Apply a __GaussianBlur__ with a 7x7 kernel to value and saturation channels
@@ -66,7 +66,7 @@ Here is an example of the value channel, first the original image:
 
 ![Original Image](/test_images/filter1.png)
 
-Then this one is jsut after the equalization and GaussianBlur:
+Then this one is just after the equalization and __GaussianBlur__:
 
 ![Filter2 Image](/test_images/filter2.png)
 
@@ -74,7 +74,20 @@ And this one is the same as the previous one but after __remove_dark__ with 3 sl
 
 ![Filter3 Image](/test_images/filter3.png)
 
+To get the bitmap images I have used 2 filters and an additional color filter.
 
+First one is the one talked in the course, just selecting pixels with gradient in x and y direction and those special values and saturations. It is in the __gradient_filter__ function that uses the __color_threshold__ and the __abs_sobel_thresh__. Here is an example of the same image with said filters:
+
+![Filter4 Image](/test_images/filter4.png)
+
+The other algorithm uses similar sobel computations linked with values in gradient x and saturation but "or's" them together so usually is messier. It is implemented in the __complex_sobel__ function.
+
+![Filter5 Image](/test_images/filter5.png)
+
+Selecting hue is difficult but a way to do it is select just the road, expand its borders and intersect with the results of the other algorithm so we have a mask that may be intersected with the other results, giving:
+
+![Filter6 Image](/test_images/filter6.png)
+![Filter7 Image](/test_images/filter7.png)
 
 ### 3. Describe how (and identify in your code) you performed a perspective transform and provide an example of a transformed image
 
