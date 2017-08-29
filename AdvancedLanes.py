@@ -716,7 +716,7 @@ class Belief(Measure):
         image_center = self.left_data.get_shape()[1] / 2.0
         lane_center = self.center_lane.get_x(0)
 
-        lane_offset = lane_center - image_center  # < 0 means I am at right, > 0 at left
+        lane_offset = lane_center - image_center
 
         return lane_offset
 

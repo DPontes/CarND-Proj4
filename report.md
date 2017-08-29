@@ -153,7 +153,7 @@ def compute_fit(self):
         self.residuals = aux[1][0] / len(self.x_values)
 
     else:
-        self.residuals = 500  # Must work, usually too few points
+        self.residuals = 500
 
     self.compute_world_coeficients()
 ```
@@ -166,7 +166,7 @@ Y=0 is the bottom of the screen. That has some interesting properties for the fi
 - B is the "direction" of the lane at x=0
 - A is the "curvature"
 
-The first property makes it very easy to get the position of the car and the lanes and move one fit to check parallelism with another one . Just made C = 0.
+The first property makes it very easy to get the position of the car and the lanes and move one fit to check parallelism with another one. Just made C = 0.
 
 This is clear in the lane creation in the __sliding_windows_fit__ and the __known_lines_fit__ in:
 
@@ -183,6 +183,8 @@ left_lane = Lane_Measure.new_lane_measure_from_data(leftx,
 where lefty has been changed to maxy-lefty.
 
 ### 5. Describe how (and identify where in the code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center
+
+
 
 ### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly
 
