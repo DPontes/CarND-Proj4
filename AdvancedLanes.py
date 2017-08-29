@@ -154,8 +154,6 @@ class Fit:
         else:
             self.residuals = 500  # Must work, usually too few points
 
-
-        #my_residuals, mysd = self.compute_my_residuals()
         self.compute_world_coeficients()
 
     # Returns the x value from the y value

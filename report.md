@@ -155,10 +155,32 @@ def compute_fit(self):
     else:
         self.residuals = 500  # Must work, usually too few points
 
-    #my_residuals, mysd = self.compute_my_residuals()
     self.compute_world_coeficients()
 ```
 
+A difference with what has been taught is that my fit units are reversed in Y.
+
+Y=0 is the bottom of the screen. That has some interesting properties for the fit (Ay^2 + By + C):
+
+- C is the position at x=0
+- B is the "direction" of the lane at x=0
+- A is the "curvature"
+
+The first property makes it very easy to get the position of the car and the lanes and move one fit to check parallelism with another one . Just made C = 0.
+
+This is clear in the lane creation in the __sliding_windows_fit__ and the __known_lines_fit__ in:
+
+```
+left_lane = Lane_Measure.new_lane_measure_from_data(leftx,
+                                                    maxy-lefty,
+                                                    l_points,
+                                                    side='left',
+                                                    filter_x=filter_name,
+                                                    method='windows', xm=world.calibration.xm,
+                                                    ym=world.calibration.ym)
+```
+
+where lefty has been changed to maxy-lefty.
 
 ### 5. Describe how (and identify where in the code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center
 
