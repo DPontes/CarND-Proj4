@@ -184,9 +184,34 @@ where lefty has been changed to maxy-lefty.
 
 ### 5. Describe how (and identify where in the code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center
 
+Radius computed in the __radius__ and __world_radius__ methods of the __Fit__ class:
 
+```
+def world_radius(self, y):
+    curverad = ((1 + (2 * self.world_coeficients[0] * y + self.world_coeficients[1]) ** 2) ** 1.5) / np.absolute(
+        2 * self.world_coeficients[0])
+
+    return curverad
+```
+
+Position is computed in the __position__ and the __position_w__ methods of the __Belief__ class:
+
+```
+def position(self):
+
+    image_center = self.left_data.get_shape()[1] / 2.0
+    lane_center = self.center_lane.get_x(0)
+
+    lane_offset = lane_center - image_center
+
+    return lane_offset
+```
 
 ### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly
+
+![Plot Image](/test_images/test2_processed.jpg)
+
+Here we have an image where the lanes are clearly marked, some important stats are visible, is it specified which filter has been selected ("so"), and an image of the warped image with the sliding windows and adjusted lines.
 
 ## Pipeline (video)
 
