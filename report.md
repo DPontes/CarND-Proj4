@@ -89,6 +89,10 @@ Selecting hue is difficult but a way to do it is select just the road, expand it
 ![Filter6 Image](/test_images/filter6.png)
 ![Filter7 Image](/test_images/filter7.png)
 
+which is a lot better.
+
+So we have 4 different possibilities in total. Depending on the situation we may like to use one or another result so that the main filtering function, __super_filter__ may return an array of all identified as "gr", "so", "grt" and "sot" corresponding to the images presented.
+
 ### 3. Describe how (and identify in your code) you performed a perspective transform and provide an example of a transformed image
 
 At the beginning the perspective transformation was calculated manually. Afterwards a small piece of code was developed in order to generate the transformation from just one parameter that is linked to the camera focal length and information about how to compress the images so that the curves on the road are visible when warped.
@@ -108,6 +112,13 @@ The conversion in the X axis from pixels to meters is modified accordingly and r
 ![Warped](/test_images/warped.jpg)
 
 As seen in the warped image, lane lines are parallel to each other.
+
+For the previous filtered images we get:
+
+![FilterCurve1 Image](/test_images/filterCurve1.png)
+![FilterCurve2 Image](/test_images/filterCurve2.png)
+
+which are similar and quite parallel at the bottom but not so clear at the top.
 
 ### 4. Describe how (and identify in the code) you identified lane-line pixels and fit their positions with a polynomial
 
