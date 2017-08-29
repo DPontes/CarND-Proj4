@@ -122,6 +122,44 @@ which are similar and quite parallel at the bottom but not so clear at the top.
 
 ### 4. Describe how (and identify in the code) you identified lane-line pixels and fit their positions with a polynomial
 
+Before going to line recognition we must decide which of the filters to use. That is an interesting question and surely there must exist a way to select them before applying. I just compute all lines in every case and get the ones that seem better.
+
+I use two methods, the sliding window method and an existing fit method for selecting points and fitting second order polynomials to the points.
+
+The two methods build a __Measure__ object with information from the sides.
+
+__Sliding Window__ is as explained in the course. We get the two centers at the bottom by getting the maximum of an histogram of a convolution of all ones window over the bottom 1/4 of the image.
+
+From here we look at next level centers around last level centers with the optimization that if no points are found in the window, the "movement" of the centroid from last one is carried on to the next level.
+
+it is implemented in the __sliding_window__ and __find_window_centroids__ functions. Points are packed as a __Fit__ object that also computes the fit and the residual and some data as radius.
+
+__World coefficients__ are computed from the warped image units as it is not necessary to do another fit.
+
+Also did some work to check that the average of the residuals are really the sigma^2 of the points against the computed points.
+
+In fact the __residuals__ interpreted as the squared standard deviation of the "fit" are very important in the algorithm.
+
+The __existing_fit__ method is implemented in __known_lines_fit__ function. It just looks for points in a "margin" around the current fit with the exception that we use an __advanced__ fit.
+
+Fit lines are computed in __Fit.compute_fit(self):__
+
+```
+def compute_fit(self):
+
+    aux = np.polyfit(self.y_values, self.x_values, 2, full=True)
+    self.coeficients = aux[0]
+    if len(aux[1]) > 0:
+        self.residuals = aux[1][0] / len(self.x_values)
+
+    else:
+        self.residuals = 500  # Must work, usually too few points
+
+    #my_residuals, mysd = self.compute_my_residuals()
+    self.compute_world_coeficients()
+```
+
+
 ### 5. Describe how (and identify where in the code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center
 
 ### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly
