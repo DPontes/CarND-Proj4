@@ -217,7 +217,7 @@ Here we have an image where the lanes are clearly marked, some important stats a
 
 ### Provide a link to your final video output. Your pipeline should perform reasonably well on the entire project video
 
-The video can be viewed here: https://youtu.be/6r69Eh8cvqA
+The video can be viewed here: https://youtu.be/c88UoVzh6s8
 
 (Video is not listed)
 
