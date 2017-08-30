@@ -217,7 +217,8 @@ Here we have an image where the lanes are clearly marked, some important stats a
 
 ### Provide a link to your final video output. Your pipeline should perform reasonably well on the entire project video
 
-The video can be viewed here: https://youtu.be/c6_leCC7t-8
+The video can be viewed here: https://youtu.be/6r69Eh8cvqA
+
 (Video is not listed)
 
 In the video, in the small window with the warped image, the red line markers at the left and right show the error. There is also a blue line, not easy to see, that shows the last frame adjustment.
